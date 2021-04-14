@@ -44,7 +44,7 @@ def command(cmd):
     if "STRING" == cm0:
         layout.write(args)
     
-    if "CAPS_LOCK" == cmd or "CAPSLOCK":
+    if "CAPS_LOCK" == cmd or "CAPSLOCK" == cmd:
         keyboard.press(Keycode.CAPS_LOCK)
         keyboard.release(Keycode.CAPS_LOCK)
         
