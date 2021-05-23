@@ -33,7 +33,6 @@ def command(cmd):
     time.sleep(def_delay)
     cm0 = cmd[0]
     
-    print(cmd)
     
     if "DEFAULT_DELAY" == cm0 or "DEFAULTDELAY" == cm0:
         def_delay = int(args)
