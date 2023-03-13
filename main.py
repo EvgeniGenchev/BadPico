@@ -4,27 +4,27 @@ from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 
-
 def_delay = 0
 keyboard = Keyboard(usb_hid.devices)
 layout = KeyboardLayoutUS(keyboard)
-
 
 def write(args):
     if args:
         layout.write(args)
     
 def get_args(cmd):
-    
     cm   = []   
     args = []                                           
     
-    for s in cmd.split(" "):                            
+    if cmd.startswith("STRING"):
+        return [cmd.split(" ")[0]], " ".join(cmd.split(" ")[1:])
+
+    for s in cmd.split(" "):                          
         if s.isupper():
             cm.append(s)
         else:
             args.append(s)
-            
+
     return cm, " ".join(args)
 
 def command(cmd):
@@ -155,5 +155,3 @@ try:
             command(line.rstrip())
 except:
     keyboard.release_all()
-        
-        
